@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Clientes</h1>
+  <button mat-icon-button><mat-icon>add</mat-icon></button>
+  <button mat-icon-button><mat-icon>filter_alt</mat-icon></button>
+  <mat-spinner *ngIf="!clients"></mat-spinner>
+  <div class="table-container">
+    <table class="table" *ngIf="clients">
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Data de Nascimento</th>
+      </tr>
+      <tr *ngFor="let client of clients | async">
+        <td>{{ client.id }}</td>
+        <td>{{ client.name }}</td>
+        <td>{{ client.cpf }}</td>
+        <td>{{ client.birthDate }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
