@@ -1,7 +1,10 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import User from '../shared/models/user';
-import { DIALOG_MODE, NewUserComponent } from './new-user/new-user.component';
+import {
+  DIALOG_MODE,
+  UserDialogComponent,
+} from './new-user/user-dialog.component';
 import { UserService } from './user.service';
 
 @Component({
@@ -35,7 +38,7 @@ export class UsersComponent implements OnInit {
   }
 
   openDialog(title: string, user?: User) {
-    const dialogRef = this.dialog.open(NewUserComponent, {
+    const dialogRef = this.dialog.open(UserDialogComponent, {
       data: { title: title, user: user },
       disableClose: true,
     });

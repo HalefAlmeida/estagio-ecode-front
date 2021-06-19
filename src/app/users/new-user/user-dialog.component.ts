@@ -9,11 +9,11 @@ export enum DIALOG_MODE {
 }
 
 @Component({
-  selector: 'app-new-user',
-  templateUrl: './new-user.component.html',
-  styleUrls: ['./new-user.component.css'],
+  selector: 'app-user-dialog',
+  templateUrl: './user-dialog.component.html',
+  styleUrls: ['./user-dialog.component.css'],
 })
-export class NewUserComponent implements OnInit {
+export class UserDialogComponent implements OnInit {
   title: string;
 
   user: User;

@@ -11,7 +11,7 @@ import { UsersComponent } from './users/users.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NewClientComponent } from './clients/new-client/new-client.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { NewUserComponent } from './users/new-user/new-user.component';
+import { UserDialogComponent } from './users/new-user/user-dialog.component';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -21,7 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ClientsComponent,
     UsersComponent,
     NewClientComponent,
-    NewUserComponent,
+    UserDialogComponent,
   ],
   imports: [
     BrowserModule,
