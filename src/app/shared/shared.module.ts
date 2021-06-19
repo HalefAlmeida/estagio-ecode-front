@@ -11,12 +11,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { SharedRoutingModule } from './shared.routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [NavigationComponent],
+  declarations: [NavigationComponent, DialogComponent],
   imports: [
     CommonModule,
     NoopAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
     LayoutModule,
     HttpClientModule,
     MatToolbarModule,
@@ -25,7 +31,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatListModule,
     SharedRoutingModule,
+    MatDialogModule,
+    MatInputModule,
   ],
-  exports: [NavigationComponent],
+  exports: [NavigationComponent, DialogComponent],
 })
 export class SharedModule {}

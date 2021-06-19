@@ -1,25 +1,38 @@
 <div class="container">
   <h1>Clientes</h1>
-  <button mat-fab color="primary" (click)="openDialog()">
-    <mat-icon>add</mat-icon>
-  </button>
-  <button mat-fab color="secondary">
-    <mat-icon>filter_alt</mat-icon>
-  </button>
+  <div class="page-buttons">
+    <button mat-fab color="primary" (click)="add()">
+      <mat-icon>add</mat-icon>
+    </button>
+    <button mat-fab color="secondary">
+      <mat-icon>filter_alt</mat-icon>
+    </button>
+  </div>
   <mat-spinner *ngIf="!clients$"></mat-spinner>
   <div class="table-container">
-    <table class="table" *ngIf="clients$">
+    <table class="table">
       <tr>
         <th>ID</th>
         <th>Nome</th>
         <th>CPF</th>
         <th>Data de Nascimento</th>
+        <th>Ações</th>
       </tr>
       <tr *ngFor="let client of clients$ | async">
         <td>{{ client.id }}</td>
         <td>{{ client.name }}</td>
         <td>{{ client.cpf }}</td>
         <td>{{ client.birthDate }}</td>
+        <td>
+          <div class="action-buttons">
+            <button mat-mini-fab color="basic" (click)="edit(client)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-mini-fab color="warn" (click)="delete(client)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
       </tr>
     </table>
   </div>

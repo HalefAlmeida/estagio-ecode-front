@@ -9,19 +9,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { UsersComponent } from './users/users.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { NewClientComponent } from './clients/new-client/new-client.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { UserDialogComponent } from './users/new-user/user-dialog.component';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ClientDetailComponent } from './clients/new-client/client-detail.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientsComponent,
     UsersComponent,
-    NewClientComponent,
-    UserDialogComponent,
+    ClientDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatProgressSpinnerModule,
     MatDialogModule,
     MatInputModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

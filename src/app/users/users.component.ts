@@ -1,10 +1,11 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import User from '../shared/models/user';
 import {
+  DialogComponent,
   DIALOG_MODE,
-  UserDialogComponent,
-} from './new-user/user-dialog.component';
+} from '../shared/components/dialog/dialog.component';
+import User from '../shared/models/user';
 import { UserService } from './user.service';
 
 @Component({
@@ -15,10 +16,32 @@ import { UserService } from './user.service';
 export class UsersComponent implements OnInit {
   users$: Promise<User[]>;
 
-  constructor(private userService: UserService, public dialog: MatDialog) {}
+  form: FormGroup;
+
+  constructor(
+    private userService: UserService,
+    public dialog: MatDialog,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
+    this.form = this.buildForm();
     this.fetch();
+  }
+
+  private buildForm(user?: User): FormGroup {
+    if (user) {
+      return this.fb.group({
+        id: [user.id],
+        email: [user.email, [Validators.email, Validators.required]],
+        password: [user.password, [Validators.required]],
+      });
+    }
+    return this.fb.group({
+      id: [null],
+      email: [null, [Validators.email, Validators.required]],
+      password: [null, [Validators.required]],
+    });
   }
 
   fetch() {
@@ -37,9 +60,9 @@ export class UsersComponent implements OnInit {
     this.userService.delete(user.id);
   }
 
-  openDialog(title: string, user?: User) {
-    const dialogRef = this.dialog.open(UserDialogComponent, {
-      data: { title: title, user: user },
+  openDialog(title: string, record?: User) {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: { title: title, record: record, form: this.buildForm(record) },
       disableClose: true,
     });
 
@@ -49,12 +72,7 @@ export class UsersComponent implements OnInit {
 
       if (transactionRef.id) {
         console.log(`Succesfully saved`);
-      } else {
       }
-
-      // if (transactionRef()) {
-      //   console.log(`Succesfully saved`);
-      // }
     });
   }
 }

@@ -2,8 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ClientService } from './client.service';
 
 import { MatDialog } from '@angular/material/dialog';
-import { NewClientComponent } from './new-client/new-client.component';
 import Client from '../shared/models/client';
+import {
+  DialogComponent,
+  DIALOG_MODE,
+} from '../shared/components/dialog/dialog.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clients',
@@ -13,7 +18,7 @@ import Client from '../shared/models/client';
 export class ClientsComponent implements OnInit {
   clients$: Promise<Client[]>;
 
-  constructor(private clientService: ClientService, public dialog: MatDialog) {}
+  constructor(private clientService: ClientService, private router: Router) {}
 
   ngOnInit(): void {
     this.fetch();
@@ -24,13 +29,16 @@ export class ClientsComponent implements OnInit {
     console.log(this.clients$);
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(NewClientComponent, {
-      disableClose: true,
-    });
+  add() {
+    let client: Client;
+    this.router.navigate(['/clients/detail']);
+  }
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
+  edit(client: Client) {
+    this.router.navigate(['/clients', client.id, 'editar']);
+  }
+
+  delete(client: Client) {
+    this.clientService.delete(client.id);
   }
 }

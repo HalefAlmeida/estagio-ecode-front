@@ -1,24 +1,31 @@
 <h2 mat-dialog-title>{{ title }}</h2>
 <mat-dialog-content class="mat-typography" disableClose="true">
-  <form [formGroup]="userForm">
+  <form [formGroup]="form">
     <div class="input-container">
-      <mat-form-field class="full-width" *ngIf="!!!!user.id">
+      <mat-form-field class="full-width" *ngIf="!!!!record.id">
         <input matInput placeholder="ID" formControlName="id" />
       </mat-form-field>
       <mat-form-field class="full-width">
         <input
           matInput
-          placeholder="Email"
-          formControlName="email"
+          placeholder="Nome"
+          formControlName="name"
           cdkFocusInitial
         />
       </mat-form-field>
-      <mat-form-field class="full-width" *ngIf="!!!user.id">
+      <mat-form-field class="full-width">
         <input
           matInput
-          placeholder="Senha"
-          formControlName="password"
+          placeholder="CPF"
+          formControlName="cpf"
           type="password"
+        />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Data de nascimento"
+          formControlName="birthDate"
         />
       </mat-form-field>
     </div>
@@ -28,8 +35,8 @@
   <button mat-button mat-dialog-close>Cancelar</button>
   <button
     mat-button
-    [mat-dialog-close]="userForm.value"
-    [disabled]="userForm.invalid"
+    [mat-dialog-close]="form.value"
+    [disabled]="form.invalid"
     type="submit"
   >
     Salvar
