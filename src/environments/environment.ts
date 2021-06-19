@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'https://estagio-ecode.herokuapp.com/ecode',
+  API_URL: 'http://localhost:8080/ecode',
 };
 
 /*
