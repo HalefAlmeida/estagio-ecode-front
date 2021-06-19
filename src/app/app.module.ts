@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClientDetailComponent } from './clients/new-client/client-detail.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { LoginComponent } from './core/login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MatRadioModule } from '@angular/material/radio';
     ClientsComponent,
     UsersComponent,
     ClientDetailComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
