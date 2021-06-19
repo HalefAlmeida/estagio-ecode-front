@@ -1,17 +1,33 @@
 <div class="container">
-  <h1>Users</h1>
-  <button mat-icon-button><mat-icon>add</mat-icon></button>
-  <button mat-icon-button><mat-icon>filter_alt</mat-icon></button>
-
+  <h1>Usuários</h1>
+  <div class="page-buttons">
+    <button mat-fab color="primary" (click)="add()">
+      <mat-icon>add</mat-icon>
+    </button>
+    <button mat-fab color="secondary">
+      <mat-icon>filter_alt</mat-icon>
+    </button>
+  </div>
   <div class="table-container">
     <table class="table">
       <tr>
         <th>ID</th>
         <th>E-mail</th>
+        <th>Ações</th>
       </tr>
-      <tr *ngFor="let user of users | async">
+      <tr *ngFor="let user of users$ | async">
         <td>{{ user.id }}</td>
         <td>{{ user.email }}</td>
+        <td>
+          <div class="action-buttons">
+            <button mat-mini-fab color="basic" (click)="edit(user)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-mini-fab color="warn" (click)="delete(user)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
       </tr>
     </table>
   </div>

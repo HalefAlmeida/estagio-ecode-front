@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { delay, take } from 'rxjs/operators';
+import Client from '../shared/models/client';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,10 @@ export class ClientService {
 
   constructor(private http: HttpClient) {}
 
-  findAll() {
-    return this.http.get(`${this.API_URL}/clients`).pipe(take(1));
+  findAll(): Promise<Client[]> {
+    return this.http
+      .get<Client[]>(`${this.API_URL}/clients`)
+      .pipe(take(1))
+      .toPromise();
   }
 }
